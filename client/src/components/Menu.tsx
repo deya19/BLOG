@@ -2,9 +2,13 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 
-const Menu = ({cat}) => {
+interface Data{
+  cat?:React.ReactNode;
+}
 
-const [posts,setPosts] = useState([]);
+const Menu:React.FC<Data> = ({cat}) => {
+
+const [posts,setPosts] = useState<(String|Number)[]>([]);
 
 
 
@@ -25,7 +29,7 @@ useEffect(() => {
   return (
     <aside className='menu'>
      <h1>Other posts you may like</h1>
-     {posts.map(post=>(
+     {posts.map((post:any)=>(
       <section className='post' key={post.id}>
         <img src={`../upload/${post.img}`} alt="" />
         <Link className='link' to={`/post/${post.id}`}>

@@ -7,12 +7,17 @@ import { Helmet } from "react-helmet-async";
 
 const Login = () => {
 
-  const [inputs,setInput] = useState({
+interface Data{
+  username:String;
+  password:String;
+}
+
+  const [inputs,setInput] = useState<Data>({
     username:"",
     password:""
   })
 
-  const [error,setError] = useState(null);
+  const [error,setError] = useState<null|String>(null);
   const navigate = useNavigate();
 
 
@@ -22,17 +27,17 @@ const Login = () => {
 
  
 
-  const handleChange = (e) => { 
+  const handleChange = (e:React.ChangeEvent<HTMLInputElement>) => { 
     setInput(prev=>({...prev,[e.target.name]:e.target.value}))
    }
    
    
-  const handleSubment = async (e) => {
+  const handleSubment = async (e:React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
     try {
       await login(inputs)
       navigate("/")
-    } catch (error) {
+    } catch (error:any) {
       setError(error.response.data)
     }
   }

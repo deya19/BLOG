@@ -4,8 +4,14 @@ import { useLocation} from 'react-router-dom';
 import { Helmet } from "react-helmet-async";
 
 const ReadMore = () => {
- 
-  const [post,setPost] = useState({});
+
+ interface Data{
+  desc: any;
+ }
+
+  const [post,setPost] = useState<Data>({
+     desc:""
+  });
 
   const location = useLocation(); 
 
@@ -28,7 +34,7 @@ const ReadMore = () => {
   },[postId])
 
     // to remove p tag that show when use react-quill
-    const getText = (html)=>{
+    const getText = (html:any)=>{
       const doc = new DOMParser().parseFromString(html,"text/html")
       return doc.body.textContent
     } 
@@ -38,7 +44,7 @@ const ReadMore = () => {
     <>
       <Helmet>
         <title>{getText(post.desc)}</title>
-        <meta name="description" content={getText(post.desc)}/>
+        <meta name="description" content="Readmore"/>
       </Helmet>
       <div className='more' >
       <main className='readMore'>

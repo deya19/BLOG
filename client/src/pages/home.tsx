@@ -6,7 +6,7 @@ import { Helmet } from "react-helmet-async";
 
 const Home = () => {
  
-  const [posts,setPosts] = useState([]);
+  const [posts,setPosts] = useState<(string|Number)[]>([]);
 
   const cat = useLocation().search; 
   
@@ -31,7 +31,7 @@ const Home = () => {
 
 
   // to remove p tag that show when use react-quill
-  const getText = (html)=>{
+  const getText = (html:any)=>{
     const doc = new DOMParser().parseFromString(html,"text/html")
     return doc.body.textContent
   } 
@@ -46,7 +46,7 @@ const Home = () => {
       </Helmet>
       <div className='home'>
        <main className='posts'>
-       {posts.map(post=>(
+       {posts.map((post:any)=>(
         <section className='post' key={post.id}>
           <article className='img'>
             <img src={`../upload/${post.img}`} alt=""/>
@@ -55,7 +55,7 @@ const Home = () => {
           <Link className='link' to={currentUser? `/post/${post.id}`:"/login"}>
           <h1>{post.title}</h1>
           </Link>
-          <p>{post.desc.length <= 400 ? getText(post.desc):getText(post.desc).slice(0,200)+ "..."}</p>
+          <p>{post.desc.length <= 400 ? getText(post.desc):getText(post.desc)?.slice(0,200)+ "..."}</p>
           <Link className='link' to={currentUser? `/more/${post.id}`:"/login"}><button>Read More</button></Link>
           </article>
         </section>

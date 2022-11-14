@@ -15,10 +15,10 @@ const Register = () => {
 
 
 
-  const [error,setError] = useState(null);
+  const [error,setError] = useState<null|String>(null);
   const navigate = useNavigate();
 
-  const handleChange = (e) => { 
+  const handleChange = (e:React.ChangeEvent<HTMLInputElement>) => { 
     setInput(prev=>({...prev,[e.target.name]:e.target.value}))
    }
 
@@ -27,12 +27,12 @@ const Register = () => {
     let syntaxGood = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(inputs.email)
 
  
-  const handleSubment = async (e) => {
+  const handleSubment = async (e:React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
     try {
       inputs.username !== "" && inputs.email !== "" && syntaxGood &&inputs.password !== "" && await axios.post("http://localhost:8080/api/auth/register",inputs,{withCredentials:true})
       inputs.username !== "" && inputs.email !== "" && syntaxGood && inputs.password !== "" && navigate("/login")
-    } catch (error) {
+    } catch (error:any) {
       setError(error.response.data)
     }
   }

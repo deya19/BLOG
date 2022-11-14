@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import Edit from '../img/edit.png'
 import Delete from '../img/delete.png'
 import {Link, useLocation, useNavigate} from "react-router-dom"
-import Menu from '../components/Menu'
+import Menu from '../components/Menu.tsx'
 import axios from 'axios'
 import moment from "moment"
 import { AuthContext } from '../context/authContext'

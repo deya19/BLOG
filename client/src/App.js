@@ -5,14 +5,14 @@ import {
   Link,
   Outlet,
 } from "react-router-dom";
-import Footer from "./components/Footer";
-import Navbar from "./components/Navbar";
+import Footer from "./components/Footer.tsx";
+import Navbar from "./components/Navbar.tsx";
 import Error from "./pages/error";
-import Home from "./pages/home";
-import Login from "./pages/login";
+import Home from "./pages/home.tsx";
+import Login from "./pages/login.tsx";
 import Profile from "./pages/profile";
-import ReadMore from "./pages/readMore";
-import Register from "./pages/register";
+import ReadMore from "./pages/readMore.tsx";
+import Register from "./pages/register.tsx";
 import Single from "./pages/single";
 import Write from "./pages/write";
 import"./style.scss"
